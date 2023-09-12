@@ -1,21 +1,19 @@
 ---
-import { getRockets, getRockets2 } from "../services/spacex";
-import CardLaunch from "./CardLaunch.astro";
+import { getRockets2 } from "../services/spacex";
+import { type Api4SpaceXResponse } from "../types/api4";
 
-const rockets = await getRockets();
-const rockets2 = await getRockets2();
+const rockets2: Api4SpaceXResponse = await getRockets2();
 
-
-console.log(rockets);
-console.log(rockets2);
-
-
+const rocketDocs = rockets2.docs;
 ---
 
-<div class="grid gap-8 sm:gird-cols-2 lg:grid-cols-3 py-[10rem]">
-  <p>
-    {
-    
-    }
-  </p>
+<div class="grid gap-8 sm:gird-cols-2 lg:grid-cols-3 py-[3rem]" id =rocketList>
+{
+  rocketDocs.map((rocket) => {
+    const name = rocket.name;
+    console.log(name);
+    <p>nombre</p>
+  })
+}
 </div>
+ 

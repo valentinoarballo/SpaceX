@@ -1,7 +1,13 @@
 export type Api4SpaceXResponse = {
-    height:           Diameter;
-    diameter:         Diameter;
-    mass:             Mass;
+    docs: Rocket[];
+    totalDocs: number;
+  }
+
+
+export type Rocket = {
+    height:           Diameter[];
+    diameter:         Diameter[];
+    mass:             Mass[];
     first_stage:      FirstStage;
     second_stage:     SecondStage;
     engines:          Engines;
