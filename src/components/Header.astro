@@ -7,36 +7,35 @@ import Logo from "./Logo.astro";
 
 <header
   id="landing-header"
-  class="py-3 sm:px-10 px-0 flex items-center fixed top-0 w-full 
+  class="py-3 md:px-10 px-0 flex items-center fixed top-0 w-full 
   justify-between z-40"
 >
-  <div class="flex flex-grow basis-0">
+  <div class="flex flex-grow basis-0 ">
     <Logo />
   </div>
 
   <nav>
     <ul
-      class="[&>li>a]:transition-colors [&>li>a]:duration-1000 flex text-sm 
-      [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block 
+      class="[&>li>a]:transition-colors [&>li>a]:duration-1000 flex text-lg
+      [&>li>a]:text-current [&>li>a]:inline-block 
       [&>li>a]:px-4 [&>li>a]:py-2"
     >
-      <li><a href="#ModelS">Model S</a></li>
-      <li><a href="#Model3">Model 3</a></li>
-      <li><a href="#ModelX">Model X</a></li>
-      <li><a href="#ModelY">Model Y</a></li>
+      <li><a href="#">Falcon</a></li>
+      <li><a href="#">Deamon</a></li>
+      <li><a href="#">Starship</a></li>
+      <li><a href="#">DMC</a></li>
+      <li><a href="/">Launches</a></li>
+
     </ul>
   </nav>
 
   <nav 
     class="hidden sm:[ul>li]:margin-0 lg:flex flex-grow justify-end basis-0">
     <ul
-      class="[&>li>a]:transition-colors [&>li>a]:duration-1000 flex text-sm 
-      [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block 
+      class="[&>li>a]:transition-colors [&>li>a]:duration-1000 flex text-lg 
+      [&>li>a]:text-current [&>li>a]:inline-block 
       [&>li>a]:px-4 [&>li>a]:py-2"
     >
-      <li><a href="#">Soporte</a></li>
-      <li><a href="#">Tienda</a></li>
-      <li><a href="#">Cuenta</a></li>
       <li><a href="#">Menú</a></li>
     </ul>
   </nav>

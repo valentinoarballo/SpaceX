@@ -1,0 +1,21 @@
+---
+import { getRockets, getRockets2 } from "../services/spacex";
+import CardLaunch from "./CardLaunch.astro";
+
+const rockets = await getRockets();
+const rockets2 = await getRockets2();
+
+
+console.log(rockets);
+console.log(rockets2);
+
+
+---
+
+<div class="grid gap-8 sm:gird-cols-2 lg:grid-cols-3 py-[10rem]">
+  <p>
+    {
+    
+    }
+  </p>
+</div>

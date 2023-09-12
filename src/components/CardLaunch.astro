@@ -3,11 +3,12 @@ interface Props {
   id: string;
   img: string;
   success: boolean;
-  flightNumber: number;
+  name: string;
   details: string | null;
+  flightNumber: number
 }
 
-const { success, flightNumber, img, id, details } = Astro.props;
+const { success, name, img, id, details, flightNumber } = Astro.props;
 
 const launchStatus = success ? "Success" : "Failure" 
 
@@ -15,8 +16,8 @@ const launchStatus = success ? "Success" : "Failure"
 
 <a 
   href={`/launch/${id}`}
-  class="rounded-lg border shadow-md bg-gray-800 border-gray-700
-  hover:scale-105 hover:bg-gray-700 hover:border-gray-500 transition flex
+  class="rounded-lg border shadow-md backdrop-blur-xl border-gray-500/25
+  hover:scale-105 hover:backdrop-blur-3xl hover:border-gray-400/25 transition flex
   flex-col"
 >
   <picture class="flex justify-center p-4">
@@ -27,21 +28,25 @@ const launchStatus = success ? "Success" : "Failure"
     
     <span 
       class:list={[
-        "text-xs font-semibold mr-2 px-2.5 py-0.5 rounded",
+        "font-extrabold mr-2 px-2.5 py-0.5 rounded",
         {
-          "bg-green-400 text-green-800" : success,
-          "bg-red-400 text-red-800" : !success
+          "bg-green-400 text-black" : success,
+          "bg-red-400 text-black" : !success
         },
       ]}
       
     >{launchStatus}</span>
 
     <h2 class="my-2 text-2xl font-bold tracking-tight text-white">
-      Flight #{flightNumber}
+      {name}
     </h2>
 
-    <p class="mb-4 font-light text-gray-400">
-      {details != null && details?.length > 100 ? details.slice(0, 97) + "..." : details}
+    <p class="border-b pb-3 mb-4 text-xl font-semibold text-white">
+      Flight #{flightNumber}
+    </p>
+
+    <p class="mb-4 text-lg font-semibold text-white">
+      {details !== null ? (details?.length > 100 ? details.slice(0, 97) + "..." : details) : "No details were provided from SpaceX"}.
     </p>
 
   </header>

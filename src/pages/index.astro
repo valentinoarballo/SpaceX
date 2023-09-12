@@ -1,8 +1,24 @@
 ---
 import Launches from "../components/Launches.astro";
+import Rockets from "../components/Rockets.astro";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="SpaceX Launches">
+
+	<div class="border">
+		<Rockets />
+	</div>
+	
 	<Launches />
+	
 </Layout>
+
+<style>
+	body {
+		background-image: url(../../public/background.jpg);
+		background-size: cover;
+		background-attachment: fixed;
+		background-position: center center;
+	}
+</style>

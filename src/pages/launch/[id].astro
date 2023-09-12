@@ -1,0 +1,87 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getLatestLaunches, getLaunchBy } from "../../services/spacex";
+import Layout from "../../layouts/Layout.astro";
+import Launches from "../../components/Launches.astro";
+
+const { id } = Astro.params
+
+let launch
+if (id) {
+  launch = await getLaunchBy ({ id })
+}
+
+export async function getStaticPaths() {
+  const launches = await getLatestLaunches()
+
+  return launches.map(launch => ({
+    params: { id: launch.id },
+  }))
+}
+
+const lenghtName = launch?.name ? launch.name.length : 0;
+const linkYoutube = launch?.links.webcast.slice(32);
+const launchStatus = launch?.success ? "Success" : "Failure" 
+
+---
+
+<Layout title={`Launch ${id}`}>
+  <article class="flex flex-wrap">
+    <header class="flex justify-center align-middle">
+      <img class="w-[15rem] h-auto" src={launch?.links.patch.large}>
+      <p class:list={[
+        "font-extrabold mx-auto ml-10",
+        {
+          "text-[5rem]" : lenghtName >= 12,
+          "text-[9rem]" : lenghtName < 12
+        },
+      ]}
+      >{launch?.name}</p>
+    </header>
+    <main>
+      <div class=" font-[1000] flex text-3xl py-[1.5rem]">
+        <p>Launch Status:</p>
+        <p class:list={[
+          "mx-5 rounded-lg py-[1px] px-3",
+          {
+            "bg-green-400 text-green-900" : launch?.success,
+            "bg-red-400 text-red-900" : !launch?.success
+          },
+        ]}
+
+        >{launchStatus}</p>
+      </div>
+      
+
+      <iframe 
+      class="mx-auto my-[1rem] border-[5px]"
+      data-videoid={launch?.links.youtube_id}
+      class="embedded-video-large" 
+      allowfullscreen="1"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      title=`${launch?.name} video` 
+      width="1000" height="600"  
+      src={`https://www.youtube.com/embed/${linkYoutube}`}></iframe>
+      
+      <p class="text-3xl font-[700] py-5">
+        {launch?.details ? launch?.details : "No details were provided from SpaceX"}
+      </p>
+
+      <div class="text-5xl">
+        {launch?.failures.map(failure => {
+          <p>
+            {failure.altitude ? `Failure altitude: ${failure.altitude}`: null}
+            {failure.time ? `Failure time: ${failure.time}`: null}
+            {failure.reason ? `Failure reason: ${failure.reason}`: null}
+          </p>
+        })}
+      </div>
+
+    </main>
+  </article>
+
+ 
+</Layout>
+
+
+
