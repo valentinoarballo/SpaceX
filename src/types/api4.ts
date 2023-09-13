@@ -1,5 +1,5 @@
 export type Api4SpaceXResponse = {
-    docs:          Rocket[];
+    docs:          Docs[];
     totalDocs:     number;
     offset:        number;
     limit:         number;
@@ -12,7 +12,7 @@ export type Api4SpaceXResponse = {
     nextPage:      number;
 }
 
-export type Rocket = {
+export type Docs = {
     height:           Diameter[];
     diameter:         Diameter[];
     mass:             Mass[];
@@ -43,9 +43,9 @@ export type Diameter = {
 }
 
 export type Engines = {
-    isp:              ISP;
-    thrust_sea_level: Thrust;
-    thrust_vacuum:    Thrust;
+    isp:              ISP[];
+    thrust_sea_level: Thrust[];
+    thrust_vacuum:    Thrust[];
     number:           number;
     type:             string;
     version:          string;
@@ -67,8 +67,8 @@ export type Thrust = {
 }
 
 export type FirstStage = {
-    thrust_sea_level: Thrust;
-    thrust_vacuum:    Thrust;
+    thrust_sea_level: Thrust[];
+    thrust_vacuum:    Thrust[];
     reusable:         boolean;
     engines:          number;
     fuel_amount_tons: number;
@@ -93,8 +93,8 @@ export type PayloadWeight = {
 }
 
 export type SecondStage = {
-    thrust:           Thrust;
-    payloads:         Payloads;
+    thrust:           Thrust[];
+    payloads:         Payloads[];
     reusable:         boolean;
     engines:          number;
     fuel_amount_tons: number;
@@ -102,7 +102,7 @@ export type SecondStage = {
 }
 
 export type Payloads = {
-    composite_fairing: CompositeFairing;
+    composite_fairing: CompositeFairing[];
     option_1:          string;
 }
 

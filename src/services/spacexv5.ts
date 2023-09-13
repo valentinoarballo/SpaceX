@@ -1,5 +1,4 @@
 import { type Doc ,type APISpaceXResponse } from "../types/api";
-import { type Api4SpaceXResponse } from "../types/api4";
 
 
 export const getLatestLaunches = async () => {
@@ -32,19 +31,4 @@ export const getLaunchBy = async ({id}: {id: string}) => {
   return launch
 }
 
-export const getRockets = async () => {
-  const res = await fetch("https://api.spacexdata.com/v4/rockets/query", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: {},
-    }),
-  });
-
-  const rockets  = await res.json() 
-
-  return rockets
-}
 

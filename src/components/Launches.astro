@@ -1,11 +1,10 @@
 ---
 import CardLaunch from "./CardLaunch.astro";
 
-import { getLatestLaunches } from "../services/spacex"
+import { getLatestLaunches } from "../services/spacexv5"
 
 const launches = await getLatestLaunches()
 
-console.log(launches)
 ---
 
 <div class="grid gap-8 sm:gird-cols-2 lg:grid-cols-3 py-[10rem]">
@@ -22,5 +21,6 @@ console.log(launches)
         />
     ))
   }
+  p
 </div>
 

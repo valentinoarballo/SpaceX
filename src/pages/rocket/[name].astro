@@ -1,0 +1,22 @@
+---
+
+import type { GetStaticPaths } from "astro";
+import { getRockets } from "../../services/spacexv4";
+import Layout from "../../layouts/Layout.astro";
+
+const { name } = Astro.params
+
+export async function getStaticPaths() {
+  
+  const rockets = await getRockets()
+
+  return rockets.map(rocket => ({
+    params: { name: rocket.name },
+  }))
+}
+
+---
+
+<Layout title={`${name}`}>
+    <p>hola</p>
+</Layout>

@@ -1,6 +1,6 @@
 ---
 import type { GetStaticPaths } from "astro";
-import { getLatestLaunches, getLaunchBy } from "../../services/spacex";
+import { getLatestLaunches, getLaunchBy } from "../../services/spacexv5";
 import Layout from "../../layouts/Layout.astro";
 import Launches from "../../components/Launches.astro";
 
@@ -79,8 +79,6 @@ const launchStatus = launch?.success ? "Success" : "Failure"
 
     </main>
   </article>
-
- 
 </Layout>
 
 
