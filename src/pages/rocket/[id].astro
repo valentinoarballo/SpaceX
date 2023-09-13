@@ -41,8 +41,8 @@ export async function getStaticPaths() {
     <main class="flex-col col-2">
 
         {
-          rocket.flickr_images.map((s) => (
-            <ImagesCarrousel image={s} />
+          rocket.flickr_images.map((image) => (
+            <ImagesCarrousel image={image} />
           ))
         }
       
