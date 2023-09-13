@@ -1,19 +1,26 @@
 ---
-import { getRockets2 } from "../services/spacex";
+import CardRocket from "./CardRocket.astro";
+
+import { getRockets } from "../services/spacex";
 import { type Api4SpaceXResponse } from "../types/api4";
 
-const rockets2: Api4SpaceXResponse = await getRockets2();
 
-const rocketDocs = rockets2.docs;
+const rockets: Api4SpaceXResponse = await getRockets();
+
+const rocketDocs = rockets.docs;
+
+console.log(rocketDocs)
+
+rocketDocs.map(({name, country, company, description}) => {
+    console.log(name)
+    console.log(country)
+    console.log(company)
+    console.log(description)
+})
 ---
 
-<div class="grid gap-8 sm:gird-cols-2 lg:grid-cols-3 py-[3rem]" id =rocketList>
-{
-  rocketDocs.map((rocket) => {
-    const name = rocket.name;
-    console.log(name);
-    <p>nombre</p>
-  })
-}
+<div class="grid gap-8 sm:gird-cols-2 lg:grid-cols-3 py-[3rem]">
+
 </div>
- 
+
+<p>hola</p>

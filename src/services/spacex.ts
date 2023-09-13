@@ -43,24 +43,8 @@ export const getRockets = async () => {
     }),
   });
 
-  const rockets  = (await res.json()) as Api4SpaceXResponse; 
+  const rockets  = await res.json() 
 
   return rockets
-}
-
-export const getRockets2 = async () => {
-  const res = await fetch("https://api.spacexdata.com/v4/rockets/query", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      query: {},
-    }),
-  });
-
-  const rockets2  = await res.json() 
-
-  return rockets2
 }
 

@@ -1,19 +1,27 @@
 export type Api4SpaceXResponse = {
-    docs: Rocket[];
-    totalDocs: number;
-  }
-
+    docs:          Rocket[];
+    totalDocs:     number;
+    offset:        number;
+    limit:         number;
+    totalPages:    number;
+    page:          number;
+    pagingCounter: number;
+    hasPrevPage:   boolean;
+    hasNextPage:   boolean;
+    prevPage:      null;
+    nextPage:      number;
+}
 
 export type Rocket = {
     height:           Diameter[];
     diameter:         Diameter[];
     mass:             Mass[];
-    first_stage:      FirstStage;
-    second_stage:     SecondStage;
-    engines:          Engines;
-    landing_legs:     LandingLegs;
+    first_stage:      FirstStage[];
+    second_stage:     SecondStage[];
+    engines:          Engines[];
+    landing_legs:     LandingLegs[];
     payload_weights:  PayloadWeight[];
-    flickr_images:    string[];
+    flickr_images:    string;
     name:             string;
     type:             string;
     active:           boolean;
