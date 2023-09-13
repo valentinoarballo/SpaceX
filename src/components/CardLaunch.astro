@@ -21,7 +21,11 @@ const launchStatus = success ? "Success" : "Failure"
   flex-col"
 >
   <picture class="flex justify-center p-4">
-    <img class="mb-5 rounded-lg" src={img} alt={`Patch for launc ${id}`} />
+    <img
+      transition:name=`img-${name}`
+      class="mb-5 rounded-lg" 
+      src={img} 
+      alt={`Patch for launc ${id}`} />
   </picture>
 
   <header class="p-4 flex-grow">
@@ -37,7 +41,9 @@ const launchStatus = success ? "Success" : "Failure"
       
     >{launchStatus}</span>
 
-    <h2 class="my-2 text-2xl font-bold tracking-tight text-white">
+    <h2
+      transition:name=`name-${name}`
+      class="my-2 text-2xl font-bold tracking-tight text-white">
       {name}
     </h2>
 

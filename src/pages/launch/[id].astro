@@ -2,7 +2,6 @@
 import type { GetStaticPaths } from "astro";
 import { getLatestLaunches, getLaunchBy } from "../../services/spacexv5";
 import Layout from "../../layouts/Layout.astro";
-import Launches from "../../components/Launches.astro";
 
 const { id } = Astro.params
 
@@ -28,8 +27,13 @@ const launchStatus = launch?.success ? "Success" : "Failure"
 <Layout title={`Launch ${id}`}>
   <article class="flex flex-wrap">
     <header class="flex justify-center align-middle">
-      <img class="w-[15rem] h-auto" src={launch?.links.patch.large}>
-      <p class:list={[
+      <img
+        transition:name=`img-${launch?.name}`
+        class="w-[15rem] h-auto" 
+        src={launch?.links.patch.large}>
+      <p
+        transition:name=`name-${launch?.name}`
+        class:list={[
         "font-extrabold mx-auto ml-10",
         {
           "text-[5rem]" : lenghtName >= 12,
@@ -38,7 +42,9 @@ const launchStatus = launch?.success ? "Success" : "Failure"
       ]}
       >{launch?.name}</p>
     </header>
-    <main>
+    <main 
+      transition:name=`main-${launch?.name}`  
+    >
       <div class=" font-[1000] flex text-3xl py-[1.5rem]">
         <p>Launch Status:</p>
         <p class:list={[
@@ -80,6 +86,3 @@ const launchStatus = launch?.success ? "Success" : "Failure"
     </main>
   </article>
 </Layout>
-
-
-
