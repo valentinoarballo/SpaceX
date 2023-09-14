@@ -2,6 +2,22 @@
 const {image} = Astro.props
 ---
 
-<div class=" my-[25px] border-[5px]">
+<picture class=" my-[25px] flex justify-center border-[8px] border-stone-200 bg-stone-200">
     <img src={image} alt="···">
-</div>
+</picture>
+
+<style>
+	@keyframes slidein {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+	}
+
+	img {
+		animation: slidein 0.5s ease-in-out;
+	}
+</style>

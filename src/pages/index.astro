@@ -4,16 +4,42 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="SpaceX">
-	<div class="flex justify-center">
-		<h1 class="text-9xl">Main Menu</h1>
+	<div class="flex justify-center mb-5">
+		<h1 class="font-black text-9xl">SpaceX</h1>
 	</div>	
+	<p class="text-3xl font-black">
+		This project is a web application created using Astro, Tailwind CSS, and TypeScript. It's important to note that none of the images displayed on the website belong to the project owner. The main purpose of this website is to serve as a testing ground for the Astro framework.
+		<br>
+		<br>
+		The website also incorporates functionality to fetch data from two SpaceX APIs, enriching the user experience with real-time information. Despite the inclusion of SpaceX data, it's important to emphasize that this project is primarily intended for testing and demonstration purposes.
+		<br>
+		<br>
+		By utilizing modern web development technologies like Astro, Tailwind CSS, and TypeScript, this project showcases the potential of these tools for building efficient and interactive web applications while emphasizing its non-ownership of any displayed images. It serves as a testament to the capabilities of web development frameworks in today's digital landscape.
+	</p>
 </Layout>
 
 <style>
+	@keyframes slidein {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+	}
+
 	body {
-		background-image: url(../../public/background.jpg);
+		animation: slidein 0.5s ease-in-out;
+		background-image: url(../../public/bg6.jpg);
 		background-size: cover;
 		background-attachment: fixed;
 		background-position: center center;
+	}
+	h1 {
+		animation: slidein 1s ease-in-out;
+	}
+	p {
+		animation: slidein 1s ease-in-out;
 	}
 </style>
