@@ -18,67 +18,84 @@ export async function getStaticPaths() {
     params: { id: rocket.id },
   }));
 }
-const reusable = rocket.first_stage.reusable ? "Reusable" : "Not Reusable"
-console.log(rocket.wikipedia)
+const reusable = rocket?.first_stage.reusable ? "Reusable" : "Not Reusable";
+console.log(rocket?.wikipedia);
 ---
 
-<Layout title={`${rocket.name}`}>
-  <main
-    transition:name="section-rocket"
-    class="flex justify-center flex-wrap"
-  >
-
+<Layout title={`${rocket?.name}`}>
+  <main transition:name="section-rocket" class="flex justify-center flex-wrap">
     <header class="flex justify-center flex-wrap">
-      <h2 class="sm:text-9xl text-7xl font-extrabold">
-        {rocket.name}
-      </h2>
+      <h1 class="sm:text-[7rem] text-7xl font-extrabold">
+        {rocket?.name}
+      </h1>
 
       <p class="text-3xl text-justify font-bold mt-24 mb-10">
-        {rocket.description}
+        {rocket?.description}
       </p>
     </header>
 
     <section class="flex justify-start w-screen">
-        <p class:list={[
-        "text-xl font-extrabold p-2 rounded",
+      <p
+        class:list={[
+          "text-xl font-extrabold p-2 rounded",
           {
-            "text-green-300 bg-green-900" : rocket.first_stage.reusable,
-            "text-red-300 bg-red-900" : !rocket.first_stage.reusable
-          }
+            "text-green-300 bg-green-900": rocket?.first_stage.reusable,
+            "text-red-300 bg-red-900": !rocket?.first_stage.reusable,
+          },
         ]}
-        >{reusable}</p>
+      >
+        {reusable}
+      </p>
     </section>
 
     <section class="w-screen my-10">
+      <h2 class="text-6xl">information and characteristics</h2>
 
-        <h2 class="text-6xl">
-          information and characteristics
-        </h2> 
+      <p class="border-b-2 pb-4 mt-3 text-xl text-justify font-bold">
+        First Flight Date {rocket?.first_flight}
+      </p>
 
-        <p class=" border-b-2 pb-4 mt-3 text-xl text-justify font-bold">First Flight Date {rocket.first_flight}</p>
-
-        <p class="text-3xl text-justify font-bold mt-10 mb-10">
-          the height of the rocket reaches to {rocket.height.meters} Meters | {rocket.height.feet} Feets and 
-          its mass is approximately of {rocket.mass.kg}Kg | {rocket.mass.lb}Lb, the rocket 
-          has {rocket.first_stage.engines} {rocket.engines.type} engines that require {rocket.first_stage.fuel_amount_tons} tons of fuel, 
-          sending this rocket to space costs around ${rocket.cost_per_launch} dollars 
-          and at the moment its success rate to date is {rocket.success_rate_pct}%.
-        </p>
-
+      <p class="text-3xl text-justify font-bold mt-10 mb-10">
+        the height of the rocket reaches to {rocket?.height.meters} Meters | {
+          rocket?.height.feet
+        } Feets and its mass is approximately of {rocket?.mass.kg}Kg | {
+          rocket?.mass.lb
+        }Lb, the rocket has {rocket?.first_stage.engines}
+        {rocket?.engines.type} engines that require {
+          rocket?.first_stage.fuel_amount_tons
+        } tons of fuel, sending this rocket to space costs around ${
+          rocket?.cost_per_launch
+        } dollars and at the moment its success rate to date is {
+          rocket?.success_rate_pct
+        }%.
+      </p>
     </section>
 
     <section class="flex-col col-2">
-
-      {rocket.flickr_images.map((image) => <ImagesCarrousel image={image} />)}
+      {rocket?.flickr_images.map((image) => <ImagesCarrousel image={image} />)}
       <p class="text-4xl">
-        More info in <a class="text-blue-300 font-black border-blue-300 border-b-2" href={rocket.wikipedia}>wikipedia</a>
+        More info in <a
+          class="text-blue-300 font-black border-blue-300 border-b-2"
+          href={rocket?.wikipedia}>wikipedia</a
+        >
       </p>
-
     </section>
   </main>
 </Layout>
 
 <style>
+  @keyframes slidein {
+    from {
+      opacity: 0;
+      transform: translateY(1%);
+    }
+
+    to {
+      opacity: 1;
+			opacity: translateY(0%);
+
+    }
+  }
   body {
     background-image: url(../../../public/bg1.jpg);
     background-size: cover;

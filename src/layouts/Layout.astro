@@ -1,5 +1,7 @@
 ---
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
 import { ViewTransitions  } from "astro:transitions";
 
 interface Props {
@@ -22,15 +24,19 @@ const { title } = Astro.props;
     <ViewTransitions />
   </head>
   
-  <body class="bg-gray-900 min-h-screen pb-32">
+  <body class="bg-gray-900 min-h-screen">
     <header style="font-family: 'Overpass', sans-serif;">
       <Header />
     </header>
     
 
-    <main style="font-family: 'Exo 2', sans-serif;" class="max-w-5xl px-4 py-[10rem] m-auto">
+    <main style="font-family: 'Exo 2', sans-serif;" class="max-w-5xl px-4 pt-[7rem] m-auto">
       <slot />
     </main>
+
+    <footer>
+      <Footer />
+    </footer>
   </body>
 
 </html>
@@ -53,7 +59,7 @@ const { title } = Astro.props;
   }
   html {
     font-family: 'Exo 2', sans-serif;
-    background: #13151a;
+    background: #000000;
     background-size: 224px;
     color-scheme: dark light;
   }

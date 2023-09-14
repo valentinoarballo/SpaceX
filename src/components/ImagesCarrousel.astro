@@ -1,23 +1,25 @@
 ---
-const {image} = Astro.props
+const { image } = Astro.props;
 ---
 
-<picture class=" my-[25px] flex justify-center border-[8px] border-stone-200 bg-stone-200">
-    <img src={image} alt="···">
+<picture
+	class="my-[25px] flex justify-center border-[8px] border-stone-200 bg-stone-200"
+>
+	<img src={image} alt="···" />
 </picture>
 
 <style>
 	@keyframes slidein {
-	from {
-		opacity: 0;
+		from {
+			transform: translateY(200%);
+		}
+
+		to {
+			opacity: translateY(0);
+		}
 	}
 
-	to {
-		opacity: 1;
-	}
-	}
-
-	img {
+	picture {
 		animation: slidein 0.5s ease-in-out;
 	}
 </style>
