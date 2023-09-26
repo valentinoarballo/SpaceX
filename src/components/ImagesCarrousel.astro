@@ -1,8 +1,53 @@
 ---
-const { image } = Astro.props;
+const { image, id } = Astro.props;
 ---
 
-<picture
+
+<section class="container-carousel">
+	<div class="slider-wrapper">
+		<div class="slider">
+			<img src={image} id={id} alt="spacex rocket">
+		</div>
+		<div class="slider-nav">
+			<a href={id}></a>
+			<a href={id}></a>
+			<a href={id}></a>
+		</div>
+	</div>
+</section>
+
+
+
+<style>
+	.container-carousel{
+		padding: 2rem;
+	}
+
+	.slider-wrapper{
+		position: relative;
+		max-width: 48rem;
+		margin: 0 auto;
+	}
+
+	.slider{
+		display: flex;
+		aspect-ratio: 16/9;
+		overflow: hidden;
+	}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <picture
 	class="my-[25px] flex justify-center border-[8px] border-stone-200 bg-stone-200"
 >
 	<img src={image} alt="···" />
@@ -22,4 +67,4 @@ const { image } = Astro.props;
 	picture {
 		animation: slidein 0.5s ease-in-out;
 	}
-</style>
+</style> -->
